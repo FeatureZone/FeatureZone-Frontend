@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+/* Custom dark mode styles */
+.dark .bg-white {
+    background-color: rgba(31, 41, 55, 0.5); /* Tailwind's gray-800 with 50% opacity */
+  }
+  .dark .text-black {
+    color: #fff;
+  }
+  .dark .bg-gray-700 {
+    background-color: #374151; /* Tailwind's gray-700 */
+  }
+  .dark .hover\:text-green-500:hover {
+    color: #2ecc71; /* Ensures hover color is correct in dark mode */
+  }
