@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import K from '../components/constants/index';
+import K from '../../assets/components/constants/index';
 
 const CallToAction = () => {
   return (
