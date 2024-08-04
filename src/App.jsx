@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/login';
@@ -20,17 +21,38 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
   },
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import LandingPage from './assets/landingPage/landingPage';
+import Login from './pages/login';
+import Register from './pages/register';
+import ProfilePage from './pages/profile';
+
+const router = createBrowserRouter([
+  { path: '/', element: <LandingPage /> },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+
+
   {
     path: '/register',
     element: <Register />,
   },
   {
+
     path: '/code',
     element: <CodePage snippets={snippets} />,
   },
   {
     path: '/code/:id',
     element: <DetailedSnippet snippets={snippets} />,
+
+    path: '/profile',
+    element: <ProfilePage />,
+
   },
 ]);
 
