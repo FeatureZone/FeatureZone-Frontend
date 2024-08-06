@@ -55,7 +55,7 @@ const UserBio = () => {
           <p className="font-bold">{bio.name}</p>
           <div className="bg-white p-4 rounded-lg shadow-lg">
             {editing ? (
-              <>
+              <form>
                 <label
                   htmlFor={`bio-${index}`}
                   className="block mb-1 font-medium"
@@ -129,26 +129,27 @@ const UserBio = () => {
                   onChange={(e) => handleChange(e, index)}
                   className="w-full bg-gray-100 border border-gray-300 rounded p-2 mb-2"
                 />
-              </>
+
+                <button
+                  type="button"
+                  onClick={handleSave}
+                  className="bg-black hover:bg-gray-400 text-white font-bold py-2 px-4 rounded mt-2"
+                >
+                  Save
+                </button>
+              </form>
             ) : (
-              <p className="text-gray-700">{bio.bio}</p>
+              <>
+                <p className="text-gray-700">{bio.bio}</p>
+                <button
+                  onClick={handleEdit}
+                  className="bg-white hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-2"
+                >
+                  Edit
+                </button>
+              </>
             )}
           </div>
-          {editing ? (
-            <button
-              onClick={handleSave}
-              className="bg-black hover:bg-gray-400 text-white font-bold py-2 px-4 rounded mt-2"
-            >
-              Save
-            </button>
-          ) : (
-            <button
-              onClick={handleEdit}
-              className="bg-white hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-2"
-            >
-              Edit
-            </button>
-          )}
         </div>
       ))}
     </div>
