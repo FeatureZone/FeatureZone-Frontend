@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import K from "../components/constants/index";
+import K from '../../assets/components/constants/index';
 
 const Testimonials = () => {
   return (
