@@ -3,6 +3,7 @@ import NavBar from '../../assets/components/navBar';
 import Footer from '../../assets/components/constants/footer';
 import ProfileHeader from './profileImageBg';
 import MenuDropdown from './menuDropdown';
+import CodeUpload from '../codeUpload/codeUpload';
 
 const ProfilePage = () => {
   return (
@@ -13,6 +14,7 @@ const ProfilePage = () => {
         <MenuDropdown />
       </div>
 
+      <CodeUpload />
       <Footer />
     </div>
   );
