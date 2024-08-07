@@ -39,7 +39,7 @@ const Login = () => {
 
             toast.success(res.data.message);
             setTimeout(() => {
-                navigate("/");
+                navigate("/profile");
             }, 1000);
         }
         catch (error) {
