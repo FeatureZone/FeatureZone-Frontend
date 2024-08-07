@@ -1,3 +1,4 @@
+
 import axios from 'axios'
 import { toast } from "react-toastify";
 
@@ -44,10 +45,31 @@ apiClient.interceptors.request.use(
     // If request error (e.g., network failure), handle it here
     return Promise.reject(error);
   }
+
+
+
+
+//Interceptor to add token to authorization header for every request
+apiClient.interceptors.request.use(
+(config) => {
+  // Check if there's a token in localStorage
+  const { token } = getDetails();
+  if (token) {
+    // Set the token in the Authorization header
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+},
+(error) => {
+  // If request error (e.g., network failure), handle it here
+  return Promise.reject(error);
+}
+
 );
 
 // Another interceptor to handle response errors
 apiClient.interceptors.response.use(
+
   (response) => {
     // If a response is received, just return it unchanged
     return response;
@@ -66,4 +88,5 @@ apiClient.interceptors.response.use(
     // Return the error so the promise is rejected
     return Promise.reject(error);
   }
+
 );

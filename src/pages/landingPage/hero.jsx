@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { heroBgv } from '../images';
+import { heroBgv } from '../../assets/images';
 
 const Hero = () => {
   return (
@@ -23,7 +23,7 @@ const Hero = () => {
           Share, manage, and document your code snippets effortlessly with our AI-powered platform.
         </p>
         <div className="mt-8 flex space-x-4">
-          <Link to="/get-started" className="bg-[#2ecc71] text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-[#2980b9]">
+          <Link to="/register" className="bg-[#2ecc71] text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-[#2980b9]">
             Get Started
           </Link>
           <Link to="/learn-more" className="bg-transparent border border-[#2ecc71] text-[#2ecc71] px-6 py-3 rounded-full text-lg font-semibold hover:bg-[#3498db] hover:text-white">
