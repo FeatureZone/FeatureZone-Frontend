@@ -8,6 +8,7 @@ import CodePage from './pages/codePage/codePage';
 import ProfilePage from './pages/profile';
 
 // Example snippet data
+
 const snippets = [
   // Your snippet data here
 ];
@@ -22,6 +23,23 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
   },
+
+
+  // import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+  // import LandingPage from './assets/landingPage/landingPage';
+  // import Login from './pages/login';
+  // import Register from './pages/register';
+  // import ProfilePage from './pages/profile';
+
+  // const router = createBrowserRouter([
+  //   { path: '/', element: <LandingPage /> },
+  //   {
+  //     path: '/login',
+  //     element: <Login />,
+  //   },
+
+
   {
     path: '/register',
     element: <Register />,

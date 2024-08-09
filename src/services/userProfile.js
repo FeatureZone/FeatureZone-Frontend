@@ -1,3 +1,4 @@
+
 import apiClient from '../config';
 
 // Create a new user profile
@@ -21,3 +22,16 @@ export const updateUserProfile = async (id, payload) => {
         throw error;
     }
 };
+
+export const apiAddUserProfile = async (payload) => {
+  return apiClient.post("/profiles", payload);
+};
+
+export const apiGetUserProfile = async () => {
+  return apiClient.get("/profiles");
+};
+
+export const apiUpdateUserProfile = async (id, payload) => {
+  return apiClient.patch(`/profiles/${id}`, payload);
+};
+

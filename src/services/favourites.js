@@ -1,3 +1,4 @@
+
 import apiClient from '../config';
 
 // Add a new favourite
@@ -43,3 +44,14 @@ export const updateFavourite = async (id, payload) => {
         throw error;
     }
 };
+
+
+
+export const AddFavourite = async (payload) => {
+    return apiClient.post("/favourites", payload)
+};
+
+export const DeleteFavourite = async (id) => {
+    return apiClient.delete(`/favourites/${id}`, id)
+};
+
