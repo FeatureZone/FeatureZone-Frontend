@@ -44,7 +44,10 @@ apiClient.interceptors.request.use(
 
 // Interceptor to handle response errors
 apiClient.interceptors.response.use(
-  (response) => response, // Simply return the response if successful
+  (response) => {
+    // If a response is received, just return it unchanged
+    return response;
+  },
   (error) => {
     if (error.response) {
       const { status } = error.response;
@@ -52,10 +55,10 @@ apiClient.interceptors.response.use(
       if (status === 401) {
         clearDetails();
         window.location.replace('/signin'); // Redirect to sign-in page
-      }
-
-      if (status === 404) {
+      } else if (status === 404) {
         toast.error('Resource not found');
+      } else {
+        // Handle other specific status codes if needed
       }
     } else {
       // Handle other kinds of errors (e.g., network errors)
@@ -65,3 +68,4 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
