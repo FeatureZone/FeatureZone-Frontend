@@ -1,16 +1,33 @@
 
-import axios from 'axios'
-import { toast } from "react-toastify";
-
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // Base URL Configuration
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
-export const apiClient = axios.create(
-    {
-        baseURL: baseUrl, 
-        // withCredentials: (true)   
-    });
+export const apiClient = axios.create({
+  baseURL: baseUrl,
+  // withCredentials: true, // Uncomment if you need to send cookies with requests
+});
+
+// Function to get user details from localStorage
+export const getDetails = () => {
+  return {
+    token: localStorage.getItem('accessToken'),
+    firstName: localStorage.getItem('firstName'),
+    lastName: localStorage.getItem('lastName'),
+    userName: localStorage.getItem('userName'),
+  };
+};
+
+// Function to clear user details from localStorage
+export const clearDetails = () => {
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('firstName');
+  localStorage.removeItem('lastName');
+  localStorage.removeItem('userName');
+};
+
 
     export const getDetails = () => {
       const user = {};
@@ -49,15 +66,21 @@ apiClient.interceptors.request.use(
 
 
 
-//Interceptor to add token to authorization header for every request
+
+// Interceptor to add token to the Authorization header for every request
 apiClient.interceptors.request.use(
-(config) => {
-  // Check if there's a token in localStorage
-  const { token } = getDetails();
-  if (token) {
-    // Set the token in the Authorization header
-    config.headers.Authorization = `Bearer ${token}`;
+  (config) => {
+    const { token } = getDetails();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    // Handle request error
+    return Promise.reject(error);
   }
+
   return config;
 },
 (error) => {
@@ -65,9 +88,10 @@ apiClient.interceptors.request.use(
   return Promise.reject(error);
 }
 
+
 );
 
-// Another interceptor to handle response errors
+// Interceptor to handle response errors
 apiClient.interceptors.response.use(
 
   (response) => {
@@ -75,6 +99,28 @@ apiClient.interceptors.response.use(
     return response;
   },
   (error) => {
+
+    if (error.response) {
+      const { status } = error.response;
+
+      if (status === 401) {
+        clearDetails();
+        window.location.replace('/signin'); // Redirect to sign-in page
+      } else if (status === 404) {
+        toast.error('Resource not found');
+      } else {
+        // Handle other specific status codes if needed
+      }
+    } else {
+      // Handle other kinds of errors (e.g., network errors)
+      toast.error('An unexpected error occurred. Please try again later.');
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+
     // If there's an error in the response (like a 401), handle it here
     if (error.response.status === 401) {
       // remove accessToken from local storage
@@ -90,3 +136,4 @@ apiClient.interceptors.response.use(
   }
 
 );
+

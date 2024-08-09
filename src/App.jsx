@@ -7,10 +7,13 @@ import DetailedSnippet from './pages/codePage/detailedSnippet';
 import CodePage from './pages/codePage/codePage';
 import ProfilePage from './pages/profile';
 
+// Example snippet data
+
 const snippets = [
   // Your snippet data here
 ];
 
+// Configure the router with all your routes
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,6 +23,7 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
   },
+
 
   // import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -35,6 +39,7 @@ const router = createBrowserRouter([
   //     element: <Login />,
   //   },
 
+
   {
     path: '/register',
     element: <Register />,
@@ -46,12 +51,14 @@ const router = createBrowserRouter([
   {
     path: '/code/:id',
     element: <DetailedSnippet snippets={snippets} />,
-
+  },
+  {
     path: '/profile',
     element: <ProfilePage />,
   },
 ]);
 
+// Main App component that provides the router
 function App() {
   return <RouterProvider router={router} />;
 }
