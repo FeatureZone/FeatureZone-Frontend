@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import NavBar from '../../assets/components/navBar';
 import ProfileHeader from './profileImageBg';
 import MenuDropdown from './menuDropdown';
+import CodeUpload from '../codeUpload/codeUpload';
+
 import Footer from '../../assets/components/constants/footer';
 import axios from './services/axiosConfig';
-// Write the frontend code to connect with the backend to fetch the details of the user to populated at the profile page
+
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
@@ -36,6 +38,9 @@ const ProfilePage = () => {
         <ProfileHeader userData={userData} />
         <MenuDropdown />
       </div>
+
+      <CodeUpload />
+
       <Footer />
     </div>
   );
