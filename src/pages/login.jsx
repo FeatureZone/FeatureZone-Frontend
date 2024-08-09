@@ -5,38 +5,50 @@ import { apiLogin } from "../services/auth";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    reValidateMode: "onBlur",
-    mode: "all",
-  });
 
-  const addToLocalStorage = (accessToken, user) => {
-    localStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("firstName", user.firstName);
-    localStorage.setItem("lastName", user.lastName);
-    localStorage.setItem("userName", user.username);
-  };
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    try {
-      const res = await apiLogin({
-        username: data.email, // Changed from username to email
-        password: data.password
-      });
-      addToLocalStorage(res.data.accessToken, res.data.user);
-      toast.success(res.data.message);
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
-    } catch (error) {
-      console.error("Login error:", error);
-      toast.error("An Error Occurred");
-    } finally {
-      setIsSubmitting(false);
+    const { register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({ reValidateMode: "onBlur", mode: "all" });
+
+    const addToLocalStorage = (accessToken, user) => {
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("firstName", user.firstName);
+        localStorage.setItem("lastName", user.lastName);
+        localStorage.setItem("userName", user.username);
+    }
+
+    const onSubmit = async (data) => {
+        console.log(data)
+        setIsSubmitting(true)
+
+        try {
+            const res = await apiLogin({
+                username: data.username,
+                password: data.password
+            });
+            console.log("Response: ", res.data);
+
+            addToLocalStorage(res.data.accessToken, res.data.user);
+
+
+            toast.success(res.data.message);
+            setTimeout(() => {
+                navigate("/profile");
+            }, 1000);
+        }
+        catch (error) {
+            console.error("Login error:", error);
+            toast.error("An Error Occurred");
+        }
+        finally {
+            setIsSubmitting(false);
+        }
+
     }
   };
 

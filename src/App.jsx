@@ -13,6 +13,29 @@ const snippets = [
   // Your snippet data here
 ];
 
+
+// const router = createBrowserRouter([
+//   {
+//     path: '/',
+//     element: <LandingPage snippets={snippets} />,
+//   },
+//   {
+//     path: '/login',
+//     element: <Login />,
+//   },
+// ])
+
+
+
+const router = createBrowserRouter([
+  { path: '/', 
+    element: <LandingPage />,
+   },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+
 // Configure the router with all your routes
 const router = createBrowserRouter([
   {
@@ -38,6 +61,7 @@ const router = createBrowserRouter([
   //     path: '/login',
   //     element: <Login />,
   //   },
+
 
 
   {

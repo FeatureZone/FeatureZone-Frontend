@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Copy, ThumbsUp, MessageSquare, Share } from 'lucide-react';
+import CommentsSection from './commentSection';
 
 const DetailedSnippet = ({ snippets }) => {
   const { id } = useParams();
@@ -44,6 +45,7 @@ const DetailedSnippet = ({ snippets }) => {
           </button>
         </div>
       </div>
+      <CommentsSection snippetId={id} />
     </div>
   );
 };
