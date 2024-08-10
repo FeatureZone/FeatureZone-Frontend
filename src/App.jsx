@@ -13,7 +13,6 @@ const snippets = [
   // Your snippet data here
 ];
 
-
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -25,19 +24,15 @@ const snippets = [
 //   },
 // ])
 
-
-
 const router = createBrowserRouter([
-  { path: '/', 
-    element: <LandingPage />,
-   },
+  { path: '/', element: <LandingPage /> },
   {
     path: '/login',
     element: <Login />,
   },
 
-// Configure the router with all your routes
-const router = createBrowserRouter([
+  // Configure the router with all your routes
+  // const router = createBrowserRouter([
   {
     path: '/',
     element: <LandingPage snippets={snippets} />,
@@ -46,7 +41,6 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
   },
-
 
   // import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -61,8 +55,6 @@ const router = createBrowserRouter([
   //     path: '/login',
   //     element: <Login />,
   //   },
-
-
 
   {
     path: '/register',

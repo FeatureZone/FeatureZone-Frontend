@@ -6,6 +6,7 @@ import CodeUpload from '../codeUpload/codeUpload';
 
 import Footer from '../../assets/components/constants/footer';
 import axios from './services/axiosConfig';
+import Contributors from '../contributors/contributors';
 
 
 const ProfilePage = () => {
@@ -40,6 +41,8 @@ const ProfilePage = () => {
       </div>
 
       <CodeUpload />
+
+      <Contributors />
 
       <Footer />
     </div>
