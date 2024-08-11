@@ -12,6 +12,7 @@ export default{
         { text: 'Home', link: '/' },
         { text: 'Features', link: '/features' },
         { text: 'Tutorials', link: '/tutorials' },
+        { text: 'Codes', link: '/code'},
         { text: 'Testimonials', link: '/testimonials' },
         { text: 'Contact', link: '/contact' },
       ],

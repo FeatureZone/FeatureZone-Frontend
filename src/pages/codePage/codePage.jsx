@@ -5,6 +5,7 @@ import K from '../../assets/components/constants/index'; // Correct import
 import CodeHeader from './codeHeader';
 import CodeSnippet from './codeSnippet';
 import Footer from '../../assets/components/constants/footer';
+import NavBar from '../../assets/components/navBar';
 
 const CodePage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -43,6 +44,7 @@ const CodePage = () => {
 
   return (
     <div className={`container mx-auto p-4 min-h-screen ${darkMode ? 'dark' : ''}`}>
+      <NavBar />
       <CodeHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <h1 className="text-3xl font-bold mb-4">Code Snippets</h1>
       <div className="flex justify-between mb-4">
