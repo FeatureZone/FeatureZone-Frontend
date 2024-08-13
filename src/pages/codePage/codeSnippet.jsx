@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Copy, ThumbsUp, MessageSquare, Share } from 'lucide-react';
 
 const CodeSnippet = ({ snippet }) => {
@@ -46,6 +46,9 @@ const CodeSnippet = ({ snippet }) => {
               <span>{snippet.shares}</span>
             </button>
           </div>
+          <Link to={`/snippets/${snippet.id}`} className="text-blue-500 mt-4 inline-block">
+            View More Details
+          </Link>
         </>
       ) : (
         <button onClick={handleToggleExpand} className="text-blue-500">
