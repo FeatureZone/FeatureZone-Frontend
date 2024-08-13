@@ -1,9 +1,16 @@
 
 import React, { useState } from 'react';
 import { Copy, ThumbsUp, MessageSquare, Share } from 'lucide-react';
+import CommentsSection from './commentSection';
+
 
 const CodeSnippet = ({ snippet }) => {
   const [expanded, setExpanded] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+
+  const handleCommentsToggle = () => {
+    setShowComments(!showComments);
+  };
 
   const handleToggleExpand = () => {
     setExpanded(!expanded);
@@ -37,10 +44,18 @@ const CodeSnippet = ({ snippet }) => {
               <ThumbsUp className="w-4 h-4" />
               <span>{snippet.likes}</span>
             </button>
-            <button className="flex items-center space-x-1">
-              <MessageSquare className="w-4 h-4" />
-              <span>{snippet.comments}</span>
-            </button>
+            <div>
+              <button
+                className="flex items-center space-x-1"
+                onClick={handleCommentsToggle}
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>{snippet.comments.length}</span>
+              </button>
+
+              {showComments && <CommentsSection snippetId={snippet.id} />}
+            </div>
+
             <button className="flex items-center space-x-1">
               <Share className="w-4 h-4" />
               <span>{snippet.shares}</span>
