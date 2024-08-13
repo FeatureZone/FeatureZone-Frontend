@@ -14,11 +14,8 @@ const Login = () => {
     formState: { errors },
   } = useForm({ reValidateMode: "onBlur", mode: "all" });
 
-  const addToLocalStorage = (accessToken, user) => {
+  const addToLocalStorage = (accessToken) => {
     localStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("firstName", user.firstName);
-    localStorage.setItem("lastName", user.lastName);
-    localStorage.setItem("userName", user.username);
   };
 
   const onSubmit = async (data) => {
@@ -36,8 +33,9 @@ const Login = () => {
 
       toast.success(res.data.message);
       setTimeout(() => {
-        navigate("/profile");
+        navigate ("/profile");
       }, 1000);
+
     } catch (error) {
       console.error("Login error:", error);
       toast.error("An Error Occurred");
